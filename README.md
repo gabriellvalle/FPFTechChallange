@@ -72,6 +72,7 @@ Antes de começar, certifique-se de ter o Postman instalado:
 
 **Postman**: Ferramenta para desenvolvimento, teste e automação de APIs.
    - [Baixe aqui](https://www.postman.com/downloads/)
+
 **Docker**: Certifique-se de que o Docker está instalado em sua máquina. Caso não esteja, siga as instruções de instalação disponíveis em:
    - [Docker](https://www.docker.com/get-started).
 
