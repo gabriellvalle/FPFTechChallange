@@ -66,7 +66,7 @@ Este repositório contém uma collection do Postman para testar a API fornecida.
 3. Realiza uma requisição GET utilizando o ID retornado para validar a criação do recurso.
 4. Fornece mensagens de erro claras caso algo não esteja de acordo com o esperado.
 
-## Ferramentas Necessárias
+### Ferramentas Necessárias
 
 Antes de começar, certifique-se de ter o Postman instalado:
 
