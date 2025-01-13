@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "f4a55f1b-8c1d-4b41-9255-9cab62aa8c2e",
+		"name": "FPF Tech Challange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40980638"
+	},
+	"item": [
+		{
+			"name": "Criar um produto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Code é 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"product_id\", 1);  // Atribua um valor fixo para o ID se ele não for retornado diretamente, função apenas para teste.\r",
+							"\r",
+							"pm.test(\"Resposta contém nome, preço, quantidade e categoria\", function () {\r",
+							"    pm.expect(jsonData.nome).to.eql(\"Mouse\");\r",
+							"    pm.expect(jsonData.preco).to.eql(\"3.00\");\r",
+							"    pm.expect(jsonData.quantidade).to.eql(2);\r",
+							"    pm.expect(jsonData.categoria).to.eql(1);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Mouse\",\r\n  \"preco\": \"3.00\",\r\n  \"quantidade\": 2,\r\n  \"categoria\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/produtos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"produtos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar um produto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Produto filtrado contém nome, preço, quantidade e categoria\", function () {\r",
+							"    pm.expect(jsonData.nome).to.eql(\"Mouse\");\r",
+							"    pm.expect(jsonData.preco).to.eql(\"3.00\");\r",
+							"    pm.expect(jsonData.quantidade).to.eql(2);\r",
+							"    pm.expect(jsonData.categoria).to.eql(1);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/produtos/{{product_id}}/?format=json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"produtos",
+						"{{product_id}}",
+						""
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
