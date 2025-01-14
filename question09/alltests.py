@@ -23,7 +23,8 @@ def setup():
     "v1, v2, v3", 
     [(5, 5, 5), (7, 7, 7), (10, 10, 10)]  # Exemplos de triângulos equiláteros
 )
-# Testa triângulos equiláteros fornecendo lados iguais, garantindo que a aplicação os identifique corretamente.
+# Testa vários casos de triângulos equiláteros fornecendo lados iguais e que formam um triângulo válido.
+# Objetivo é verificar se a ferramenta mostra o resultado esperado devidamente.
 def test_valida_triangulos_equilateros(setup, v1, v2, v3):
     """Teste para triângulo equilátero"""
     driver = setup
@@ -39,7 +40,8 @@ def test_valida_triangulos_equilateros(setup, v1, v2, v3):
     "v1, v2, v3", 
     [(5, 5, 8), (6, 6, 9), (7, 7, 10)]  # Exemplos de triângulos isósceles
 )
-# Testa triângulos isósceles fornecendo dois lados iguais e um diferente, validando a identificação correta pela aplicação.
+# Testa triângulos isósceles fornecendo dois lados iguais e um diferente, mas que certamente forma um triângulo válido.
+# Objetivo é verificar se a ferramenta mostra o resultado esperado devidamente.
 def test_valida_triangulos_isosceles(setup, v1, v2, v3):
     """Teste para triângulo isósceles"""
     driver = setup
@@ -55,7 +57,8 @@ def test_valida_triangulos_isosceles(setup, v1, v2, v3):
     "v1, v2, v3", 
     [(4, 5, 6), (7, 8, 9), (10, 11, 12)]  # Exemplos de triângulos escalenos
 )
-# Testa triângulos escalenos fornecendo três lados diferentes, verificando se a aplicação retorna a classificação correta.
+# Testa triângulos escalenos fornecendo três lados diferentes, mas válidos para um triângulo existente.
+# Objetivo é verificar se a ferramenta mostra o resultado esperado devidamente.
 def test_valida_triangulos_escalenos(setup, v1, v2, v3):
     """Teste para triângulo escaleno"""
     driver = setup
