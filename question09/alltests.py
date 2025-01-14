@@ -4,6 +4,9 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
+# Configuração inicial do Selenium WebDriver, responsável por inicializar o navegador antes dos testes 
+# e finalizá-lo após a execução de todos os testes de uma classe.
+
 @pytest.fixture(scope="class")
 def setup():
     """Configuração inicial: executada uma vez para todos os testes"""
@@ -13,10 +16,14 @@ def setup():
     yield driver
     driver.quit()
 
+# O decorator @pytest.mark.parametrize permite executar o mesmo teste várias vezes com diferentes conjuntos de dados, 
+# o que ajuda a testar abrangemente os casos de teste e obter um report eficiente pelo framework.
+
 @pytest.mark.parametrize(
     "v1, v2, v3", 
     [(5, 5, 5), (7, 7, 7), (10, 10, 10)]  # Exemplos de triângulos equiláteros
 )
+# Testa triângulos equiláteros fornecendo lados iguais, garantindo que a aplicação os identifique corretamente.
 def test_valida_triangulos_equilateros(setup, v1, v2, v3):
     """Teste para triângulo equilátero"""
     driver = setup
@@ -32,6 +39,7 @@ def test_valida_triangulos_equilateros(setup, v1, v2, v3):
     "v1, v2, v3", 
     [(5, 5, 8), (6, 6, 9), (7, 7, 10)]  # Exemplos de triângulos isósceles
 )
+# Testa triângulos isósceles fornecendo dois lados iguais e um diferente, validando a identificação correta pela aplicação.
 def test_valida_triangulos_isosceles(setup, v1, v2, v3):
     """Teste para triângulo isósceles"""
     driver = setup
@@ -47,6 +55,7 @@ def test_valida_triangulos_isosceles(setup, v1, v2, v3):
     "v1, v2, v3", 
     [(4, 5, 6), (7, 8, 9), (10, 11, 12)]  # Exemplos de triângulos escalenos
 )
+# Testa triângulos escalenos fornecendo três lados diferentes, verificando se a aplicação retorna a classificação correta.
 def test_valida_triangulos_escalenos(setup, v1, v2, v3):
     """Teste para triângulo escaleno"""
     driver = setup
@@ -77,6 +86,9 @@ def test_valida_triangulos_escalenos(setup, v1, v2, v3):
         (3, 8, 15)         # Triângulo inválido (não forma um triângulo)
     ]  # Exemplos de lados para verificar validade
 )
+# Testa a validade dos triângulos fornecendo combinações de lados válidos e inválidos, 
+# verificando se os casos distintos estão funcionando corretamente e se uma mensagem de erro é fornecida pela ferramenta.
+# Caso a ferramenta forneça um resultado inesperado, o teste falha e uma mensagem com a combinação de lados e resultado obtido é mostrada no terminal. 
 def test_triangulo_validade(setup, v1, v2, v3):
     """Teste para verificar se os lados fornecidos formam um triângulo válido"""
     driver = setup
